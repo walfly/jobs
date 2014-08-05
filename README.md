@@ -123,3 +123,5 @@ Write unit tests for critical parts of your app. The process of writing tests fo
 ### [Web App Engineer Challenge - Multi-Day View](instructions/webapp-engineer.md)
 
 ### [Backend Engineer Challenge - Google Calendar Data Proxy](instructions/backend-engineer.md)
+
+### [Designer Challenge - Onboarding and Uber](instructions/designer.md)
