@@ -1,6 +1,6 @@
 # Sunrise Designer Challenge
 
-The output of your work must be visual pixel perfect mocks.
+The output of your work must be pixel perfect visual mocks.
 
 **Mobile Onboarding**
 
