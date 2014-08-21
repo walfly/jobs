@@ -7,7 +7,9 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      all: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js'],
+      pub: {
+        src:['public/**/*.js', '!public/javascripts/bundle.js', '!public/javascripts/specs.js']
+      },
       options: {
         reporter: require('jshint-stylish')
       }

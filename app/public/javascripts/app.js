@@ -1,3 +1,3 @@
 var angular = require('angular');
 
-angular.module('wfCalendar');
+angular.module('wfCalendar', []);
