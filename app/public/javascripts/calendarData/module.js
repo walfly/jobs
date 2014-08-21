@@ -1,5 +1,6 @@
 var angular = require('angular');
 
-var service = require('service');
+var service = require('./service.js');
 
-angular.module('wfCalendar.calendarData', []);
+angular.module('wfCalendar.calendarData', [])
+  .service('wfCalendar.calendarData.service', service);

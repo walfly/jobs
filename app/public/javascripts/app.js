@@ -1,3 +1,5 @@
 var angular = require('angular');
 
-angular.module('wfCalendar', []);
+require('./calendarData/module.js');
+
+angular.module('wfCalendar', ['wfCalendar.calendarData']);
