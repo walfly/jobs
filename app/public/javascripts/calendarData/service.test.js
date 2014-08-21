@@ -58,15 +58,39 @@ describe('the calendar data service', function () {
       expect(week[2].events[2].title).toEqual('dateThree');
     });
     it('should calculate the overlaps for all events', function () {
+      // creates this pattern of events
+      // |
+      // ||
+      // |||
+      // ||||
+      //  ||||
+      //   || |
+      //    |  |
+      //        |
+      //         |
+      //          |
+
       var dates = [];
       var curDate = new Date();
       var unit = 10000;
       var obj;
       for(var i = 0; i < 10; i ++){
         obj = {};
-        obj 
-
+        obj.start = new Date(curDate.getTime() + (unit * i));
+        obj.end = i < 4 ?
+          new Date(obj.start.getTime() + (unit * 4)):
+          new Date(obj.start.getTime() + unit);
       }
+      angular.forEach(dates, function (date){
+        service.addEvent({startTime: date.start, endTime: date.end}, 1);
+      });
+      angular.forEach(week[1].events, function (event, index) {
+        if(index < 7){
+          expect(event.overlaps).toEqual(6);
+        } else {
+          expect(event.overlaps).toEqual(0);
+        }
+      });
     });
   });
 });

@@ -49,56 +49,28 @@ module.exports = function () {
 
   this.assignOverlaps = function (day) {
     var calDay = calendar.week[day];
-    // find the new entry
-    var i = 0;
-    var j = 0;
-    var possition;
-    while(possition === undefined){
-      if(calDay.events[i].overlaps === undefined){
-        possition = i;
-      }
-      i ++;
-    }
-    // move out from the new entry til no longer overlaps
-    var overLapping = {
-      before: true,
-      after: true
+    // build a list of overlaps, events are already chronological
+    var overLapList = [];
+    var assign = function (item) {
+      item.overlaps = overLapList.length - 1;
     };
-    // initialize the number of overlaps to 0
-    calDay.events[possition].overlaps = 0;
-    // initialize i and j to be either side of the new entry
-    i = possition + 1;
-    j = possition - 1;
-
-    while(overLapping.before || overLapping.after){
-      if(i < calDay.events.length){
-        // if it overlaps with later times
-        if(calDay.events[i].startTime <= calDay.events[possition].endTime){
-          calDay.events[i].overlaps ++;
-          calDay.events[possition] ++;
-        } else {
-          overLapping.after = false;
-        }
-        i ++;
+    // preload the starting point 
+    overLapList.push(calDay.events[0]);
+    for(var i = 0; i < calDay.events.length; i ++){  
+      // if the next one overlaps add it
+      if(calDay.events[i+1] && calDay.events[i].endTime > calDay.events[i+1].startTime){
+        overLapList.push(calDay.events[i+1]);
       } else {
-        // stop the loop if it overalps all the way to the end
-        overLapping.after = false;
-      }
-      if(j >= 0){
-        // if it overlaps with earlier times
-        if(calDay.events[j].endTime >= calDay.events[possition].startTime){
-          calDay.events[j].overlaps ++;
-          calDay.events[possition] ++;
-        } else {
-          overLapping.after = false; 
+      // first none overlap count the list and assign the overlaps to each
+        angular.forEach(overLapList, assign);
+        // empty the list
+        overLapList.length = 0;
+        // start it on the next event
+        if(calDay.events[i+1]){
+          overLapList.push(calDay.events[i+1]);
         }
-        j --;
-      } else {
-        // stop the loop if it overalps all the way to the beginning
-        overLapping.before = false;
       }
     }
-
   };
 
   this.dumpAllEvents = function () {
