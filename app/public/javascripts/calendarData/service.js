@@ -51,12 +51,15 @@ module.exports = function () {
     var calDay = calendar.week[day];
     // build a list of overlaps, events are already chronological
     var overLapList = [];
-    var assign = function (item) {
+    var assign = function (item, index) {
+      item.overlapPos = index;
       item.overlaps = overLapList.length - 1;
     };
     // preload the starting point 
     overLapList.push(calDay.events[0]);
-    for(var i = 0; i < calDay.events.length; i ++){  
+    for(var i = 0; i < calDay.events.length; i ++){ 
+      // events need to be able to find themselves in the list for editing 
+      calDay.events[i].index = i;
       // if the next one overlaps add it
       if(calDay.events[i+1] && calDay.events[i].endTime > calDay.events[i+1].startTime){
         overLapList.push(calDay.events[i+1]);
