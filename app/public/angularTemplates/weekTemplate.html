@@ -1,6 +1,11 @@
-<div class='week-container'>
-  <div class="label-container" wf-time-label>
-    <div class="date-label"></div>
+<div>
+  <div class="date-labels">
+    <div class="date-label-placeholder"></div>
+    <div ng-repeat="day in week" class='date-label' ng-class="{'today': day.isToday}">{{day.date|wfAbbrDay}} {{day.date|wfMonthDay}}</div>
   </div>
-  <wfday ng-repeat="day in week" day="day"></wfday>
+  <div class='week-container'>
+    <div class="label-container" wf-time-label>
+    </div>
+    <wfday ng-repeat="day in week" day="day"></wfday>
+  </div>
 </div>

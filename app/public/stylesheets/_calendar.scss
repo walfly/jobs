@@ -1,7 +1,7 @@
 $halfHour: 25px;
 $calWidth: 1000px;
 $timeLabelWidth: 50px;
-$dayWidth: ($calWidth - $timeLabelWidth + 5px)/7;
+$dayWidth: ($calWidth - $timeLabelWidth)/7;
 $grey: #5f5f5f;
 
 .time-block{
@@ -20,6 +20,37 @@ $grey: #5f5f5f;
   display: inline-block;
 }
 
+.date-labels{
+  position: relative;
+  background-color: #fff;
+  /*width: 100%;*/
+  margin: -10px -10px 0 -10px;
+  -webkit-box-shadow: 0px 2px 10px -2px rgba(50, 50, 76, 0.5);
+  -moz-box-shadow:    0px 2px 10px -2px rgba(50, 50, 76, 0.5);
+  box-shadow:         0px 2px 10px -2px rgba(50, 50, 76, 0.5);
+  .date-label{
+    height: 40px;
+    padding: 10px;
+    display: inline-block;
+    width: $dayWidth / $calWidth * 100%;
+    text-align: center;
+    margin: 0;
+  }
+  .date-label-placeholder{
+    height: 40px;
+    display: inline-block;
+    margin: 0;
+    float: left;
+    width: $timeLabelWidth / $calWidth * 100%;
+  }
+}
+
+.date-label.today{
+  color: #1d87e7;
+  font-weight: bold;
+}
+
+
 
 .calendar-day{
   @extend .cal-element;
@@ -34,9 +65,6 @@ $grey: #5f5f5f;
   }
   .time-block-odd:first-child{
     border-top: none;
-  }
-  .date-label{
-    height: 15px;
   }
 }
 
@@ -55,8 +83,6 @@ $grey: #5f5f5f;
   .time-label.label0{
     height: -9px + 2 * $halfHour;
   }
-  .date-label{
-    height: 15px;
-  }
+
 }
 
