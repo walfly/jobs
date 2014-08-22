@@ -33,7 +33,8 @@ module.exports = function () {
     return dayOfWeek;
   };
 
-  this.addEvent = function (event, day) {
+  this.addEvent = function (event) {
+    var day = event.startTime.getDay();
     calendar.week[day].events.push(event);
     // maintain events in order of startTime 
     calendar.week[day].events.sort(function (a, b) {

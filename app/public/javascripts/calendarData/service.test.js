@@ -33,29 +33,24 @@ describe('the calendar data service', function () {
       service.dumpAllEvents();
     });
     var week = service.getWeek();
-    it('should push the event to the the day passed into the function', function () {
-      var numEvents;
-      for(var i = 0; i < week.length; i ++){
-        numEvents = Math.floor(Math.random()*5);
-        for(var j = 0; j < numEvents; j ++){
-          service.addEvent({startTime: new Date ()}, i);
-        }
-        expect(week[i].events.length).toEqual(numEvents);
-      }
+    it('should push the event to the the correct day', function () {
+      var date = new Date(2014, 7, 22, 4);
+      service.addEvent({startTime: date});
+      expect(week[date.getDay()].events.length).toEqual(1);
     });
     it('should sort the events by start time', function () {
-      var dateOne = new Date();
+      var dateOne = new Date(2014, 7, 22, 4);
       var dateOneEnd = new Date(dateOne.getTime() + 100);
       var dateTwo = new Date(dateOne.getTime() - 50000);
       var dateTwoEnd = new Date(dateTwo.getTime() + 100);
       var dateThree = new Date(dateOne.getTime() + 50000);
       var dateThreeEnd = new Date(dateThree.getTime() + 500);
-      service.addEvent({startTime: dateOne, endTime: dateOneEnd, title: 'dateOne'}, 2);
-      service.addEvent({startTime: dateTwo, endTime: dateTwoEnd, title: 'dateTwo'}, 2);
-      service.addEvent({startTime: dateThree, endTime: dateThreeEnd, title: 'dateThree'}, 2);
-      expect(week[2].events[0].title).toEqual('dateTwo');
-      expect(week[2].events[1].title).toEqual('dateOne');
-      expect(week[2].events[2].title).toEqual('dateThree');
+      service.addEvent({startTime: dateOne, endTime: dateOneEnd, title: 'dateOne'});
+      service.addEvent({startTime: dateTwo, endTime: dateTwoEnd, title: 'dateTwo'});
+      service.addEvent({startTime: dateThree, endTime: dateThreeEnd, title: 'dateThree'});
+      expect(week[dateOne.getDay()].events[0].title).toEqual('dateTwo');
+      expect(week[dateOne.getDay()].events[1].title).toEqual('dateOne');
+      expect(week[dateOne.getDay()].events[2].title).toEqual('dateThree');
     });
     it('should calculate the overlaps for all events', function () {
       // creates this pattern of events
@@ -71,7 +66,7 @@ describe('the calendar data service', function () {
       //          |
 
       var dates = [];
-      var curDate = new Date();
+      var curDate = new Date(2014, 7, 22, 4);
       var unit = 10000;
       var obj;
       for(var i = 0; i < 10; i ++){
