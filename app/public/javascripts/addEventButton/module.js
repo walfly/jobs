@@ -8,4 +8,5 @@ angular.module('wfCalendar.addEventButton', ['wfCalendar.calendarData'])
   .controller('wfCalendar.addEventButton.controller', [
     '$scope',
     'wfCalendar.calendarData.service',
-     controller]);
+     controller
+  ]);
