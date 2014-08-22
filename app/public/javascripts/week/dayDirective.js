@@ -2,12 +2,11 @@ module.exports = function () {
   return {
     restrict: 'E',
     scope: {
-      dayModel: '=dayModel'
+      day: '=day'
     },
     replace: true,
     templateUrl: '/angularTemplates/dayTemplate.html',
     link: function (scope, element, attr){
-
     }
   };
 };

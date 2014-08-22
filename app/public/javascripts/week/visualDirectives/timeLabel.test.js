@@ -9,7 +9,7 @@ describe('creating timeLabels', function () {
     element = angular.element('<div></div>');
     object.compile(element);
   });
-  it('should create 24 time labels', function () {
+  it('should create 23 time labels', function () {
     expect(element.find('div').length).toEqual(24);
   });
   it('should distinguish between am and pm', function () {

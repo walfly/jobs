@@ -14,7 +14,10 @@ module.exports = function () {
         } else {
           str += ' am';
         }
-        el = angular.element('<div class="time-label">'+str+'</div>');
+        if(i === 0){
+          str = '';
+        }
+        el = angular.element('<div class="time-label label'+i+'">'+str+'</div>');
         element.append(el);
       }
     }

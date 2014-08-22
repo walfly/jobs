@@ -1,7 +1,7 @@
-$halfHour: 20px;
-$calWidth: 1400px;
-$timeLabelWidth: 65px;
-$dayWidth: 183px;
+$halfHour: 25px;
+$calWidth: 1000px;
+$timeLabelWidth: 50px;
+$dayWidth: ($calWidth - $timeLabelWidth + 5px)/7;
 $grey: #5f5f5f;
 
 .time-block{
@@ -20,6 +20,7 @@ $grey: #5f5f5f;
   display: inline-block;
 }
 
+
 .calendar-day{
   @extend .cal-element;
   width: $dayWidth / $calWidth * 100%;
@@ -31,15 +32,31 @@ $grey: #5f5f5f;
     @extend .time-block;
     border-top: 1px solid $grey;
   }
+  .time-block-odd:first-child{
+    border-top: none;
+  }
+  .date-label{
+    height: 15px;
+  }
 }
 
 .label-container{
   @extend .cal-element;
-  width: $timeLabelWidth / $calWidth * 100%;
+  width: $timeLabelWidth/$calWidth * 100%;
+  margin: 0;
+  padding-right: 5px;
   border-right: 1px solid $grey;
-  div{
+  float: left;
+  .time-label{
     height: 2 * $halfHour;
     width: 100%;
+    text-align: right;
+  }
+  .time-label.label0{
+    height: -9px + 2 * $halfHour;
+  }
+  .date-label{
+    height: 15px;
   }
 }
 
