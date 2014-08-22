@@ -10,11 +10,7 @@ module.exports = function () {
       // min height, seconds won't make a visual difference 
       var minBlock = hourBlock/60;
       // position = hours times hourblock size + minutes * minblock size
-      var position = (time.getHours() * hourBlock) + (time.getMinutes() * minBlock);
-      // making the assumption that week is always the direct parent of a day
-      var week = element.parent();
-      // return the actual position on the page
-      return position - week.offset().top + week.scrollTop();
+      return (time.getHours() * hourBlock) + (time.getMinutes() * minBlock);
     },
 
     startAndEnd: function (element, start, end) {

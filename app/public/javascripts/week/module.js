@@ -13,4 +13,4 @@ angular.module('wfCalendar.week', ['wfCalendar.calendarData'])
   .directive('wfday', dayDirective)
   .directive('wfThirtyMinBoxes', thirtyMinBoxes)
   .directive('wfTimeLabel', timeLabel)
-  .directive('wfTimeIndicator', ['wfTimePositioning', timeIndicator]);
+  .directive('wftimeindicator', ['wfTimePositioning', timeIndicator]);

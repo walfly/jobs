@@ -3,18 +3,6 @@ var timePositioningFactory = require('./timePositioningFactory.js');
 var mockElement = {
   height: function () {
     return 24 * 60;
-  },
-  parent: function () {
-    return {
-      offset: function () {
-        return {
-          top: 20,
-        };
-      },
-      scrollTop: function () {
-        return 480;
-      }
-    };
   }
 };
 
@@ -24,7 +12,7 @@ describe('timePositioningFactory', function () {
   describe('converting time to position', function () {
     it('should take a time and return the position within the week container', function () {
       var date = new Date(2014, 7, 22, 10, 25);
-      expect(timePositioning.timeToPosition(mockElement, date)).toEqual(1085);
+      expect(timePositioning.timeToPosition(mockElement, date)).toEqual(625);
     });
   });
   describe('startAndEnd', function () {
