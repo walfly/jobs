@@ -74,17 +74,8 @@ $grey: #e3e3e3;
   }
   .time-indicator{
     position: absolute;
-    height: 2px;
     width: 100%;
     border-top: 2px solid #fd5456;
-  }
-  .time-indicator:before,
-  .time-indicator:after{
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #fd5456;
   }
 }
 

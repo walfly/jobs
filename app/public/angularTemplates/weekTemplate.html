@@ -3,7 +3,7 @@
     <div class="date-label-placeholder"></div>
     <div ng-repeat="day in week" class='date-label' ng-class="{'today': day.isToday}">{{day.date|wfAbbrDay}} {{day.date|wfMonthDay}}</div>
   </div>
-  <div class='week-container'>
+  <div class='week-container' wf-scroll-to-hour hour='9'>
     <div class="label-container" wf-time-label>
     </div>
     <wfday ng-repeat="day in week" day="day"></wfday>
