@@ -1,8 +1,12 @@
 var angular = require('angular');
 
-var weekDirectve = require('./weekDirective.js');
-var thirtyMinBoxes = require('./thirtyMinBoxes.js');
+var weekDirective = require('./weekDirective.js');
+var dayDirective = require('./dayDirective.js');
+var thirtyMinBoxes = require('./visualDirectives/thirtyMinBoxes.js');
+var timeLabel = require('./visualDirectives/timeLabel.js');
 
 angular.module('wfCalendar.week', ['wfCalendar.calendarData'])
-  .directive('wfWeek', weekDirective)
-  .directive('wfThirtyMinBoxes', thirtyMinBoxes);
+  .directive('wfweek', weekDirective)
+  .directive('wfday', dayDirective)
+  .directive('wfThirtyMinBoxes', thirtyMinBoxes)
+  .directive('wfTimeLabel', timeLabel);
