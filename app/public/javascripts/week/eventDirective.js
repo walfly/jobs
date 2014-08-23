@@ -1,4 +1,4 @@
-module.exports = function (timePosition) {
+module.exports = function ($filter, timePosition) {
   return {
     restrict: 'E',
     replace: true,
@@ -7,9 +7,8 @@ module.exports = function (timePosition) {
     },
     templateUrl: '/angularTemplates/eventTemplate.html',
     link: function (scope, element, attr) {
-      var buildDiv = function () {
+      var update = function () {
         var position = timePosition.startAndEnd(element.parent(), scope.event.startTime, scope.event.endTime);
-        console.log('hey', position);
         var width = element.parent().width()/(scope.event.overlaps + 1);
         element.css({
           top: position.start,
@@ -18,7 +17,7 @@ module.exports = function (timePosition) {
           width: width
         });
       };
-      scope.$watch('event.overlaps', buildDiv);
+      scope.$watch('event.overlaps', update);
     }
   };
 };

@@ -2,6 +2,7 @@ $halfHour: 25px;
 $calWidth: 1000px;
 $timeLabelWidth: 50px;
 $dayWidth: ($calWidth - $timeLabelWidth)/7;
+$eventFont: 14px;
 $grey: #e3e3e3;
 
 .time-block{
@@ -55,7 +56,16 @@ $grey: #e3e3e3;
   font-weight: bold;
 }
 
-
+.calendar-event-pseudo{
+  text-align: left;
+  background-color: #91c3f4;
+  width: 100%;
+  padding-left: 5px;
+  position: absolute;
+  height: $eventFont;
+  top: 100%;
+  margin-top: -$eventFont;
+}
 
 .calendar-day{
   @extend .cal-element;
@@ -80,6 +90,26 @@ $grey: #e3e3e3;
   .calendar-event{
     position: absolute;
     background-color: #91c3f4;
+    border-left: 2px solid #1c80dc;
+    display:inline-block;
+    overflow: hidden;
+    padding-bottom: 10px;
+    font-size: $eventFont;
+    p{
+      display: block;
+      position: relative;
+      width: 95%;
+      margin: 3px;
+      margin-bottom: 5px;
+    }
+  }
+  .calendar-event:after{
+    content: '';
+    @extend .calendar-event-pseudo;
+  }
+  .calendar-event.truncated:after{
+    content: '...';
+    @extend .calendar-event-pseudo;
   }
 }
 

@@ -7,6 +7,7 @@ var thirtyMinBoxes = require('./visualDirectives/thirtyMinBoxes.js');
 var timeLabel = require('./visualDirectives/timeLabel.js');
 var scrollToHour = require('./visualDirectives/scrollToHour.js');
 var timeIndicator = require('./visualDirectives/timeIndicator.js');
+var truncate = require('./visualDirectives/truncate.js');
 var timePositioning = require('./factories/timePositioningFactory.js');
 
 angular.module('wfCalendar.week', ['wfCalendar.calendarData'])
@@ -15,6 +16,7 @@ angular.module('wfCalendar.week', ['wfCalendar.calendarData'])
   .directive('wfday', dayDirective)
   .directive('wfThirtyMinBoxes', thirtyMinBoxes)
   .directive('wfTimeLabel', timeLabel)
+  .directive('wfTruncate', truncate)
   .directive('wfScrollToHour', scrollToHour)
   .directive('wftimeindicator', ['wfTimePositioning', timeIndicator])
-  .directive('wfevent', ['wfTimePositioning', eventDirective]);
+  .directive('wfevent', ['$filter','wfTimePositioning', eventDirective]);
