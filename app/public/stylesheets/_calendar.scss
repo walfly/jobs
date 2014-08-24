@@ -56,16 +56,6 @@ $grey: #e3e3e3;
   font-weight: bold;
 }
 
-.calendar-event-pseudo{
-  text-align: left;
-  background-color: #91c3f4;
-  width: 100%;
-  padding-left: 5px;
-  position: absolute;
-  height: $eventFont;
-  top: 100%;
-  margin-top: -$eventFont;
-}
 
 .calendar-day{
   @extend .cal-element;
@@ -111,6 +101,20 @@ $grey: #e3e3e3;
     content: '...';
     @extend .calendar-event-pseudo;
   }
+}
+
+.calendar-day.today{
+  background-color: #f1f7fd;
+}
+.calendar-event-pseudo{
+  text-align: left;
+  background-color: #91c3f4;
+  width: 100%;
+  padding-left: 5px;
+  position: absolute;
+  height: $eventFont;
+  top: 100%;
+  margin-top: -$eventFont;
 }
 
 .label-container{

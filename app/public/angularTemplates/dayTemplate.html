@@ -1,4 +1,4 @@
-<div class='calendar-day'>
+<div class='calendar-day' ng-class='{today: day.isToday}'>
   <div wf-thirty-min-boxes></div>
   <wftimeindicator ng-if='day.isToday'></wftimeindicator>
   <wfevent ng-repeat='event in day.events' event='event'></wfevent>
