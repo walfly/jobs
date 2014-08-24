@@ -1,7 +1,23 @@
 .under-calendar{
-  margin: 30px -10px 0 -10px;
+  border-top: 1px solid $grey;
   display: block;
   width: 100%;
-  clear: both;
   position: relative;
+  height: 10%;
+  .add-event,
+  .add-event:active,
+  .add-event:focus{
+    margin-left: 10px;
+    position: relative;
+    padding: 10px 20px;
+    background-color: #91c3f4;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;  
+  }
+  .add-event:hover{
+    -webkit-box-shadow: inset 0 0 1em 0px rgba(255, 255, 255, 0.75);
+    -moz-box-shadow:    inset 0 0 1em 0px rgba(255, 255, 255, 0.75);
+    box-shadow:         inset 0 0 1em 0px rgba(255, 255, 255, 0.75);
+  }
 }
