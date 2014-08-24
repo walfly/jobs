@@ -6,7 +6,7 @@ module.exports = function () {
     templateUrl: '/angularTemplates/weekTemplate.html',
     controller: [
       '$scope',
-      'wfCalendar.calendarData.service',
+      'wfCalendarData',
       function (scope, calendarData) {
         scope.week = calendarData.getWeek();
       }

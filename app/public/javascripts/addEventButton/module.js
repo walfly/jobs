@@ -1,12 +1,14 @@
 var angular = require('angular');
 
 require('../calendarData/module.js');
+require('../addEventButton/module.js');
 
 var controller = require('./controller.js');
 
-angular.module('wfCalendar.addEventButton', ['wfCalendar.calendarData'])
+angular.module('wfCalendar.addEventButton', ['wfCalendar.calendarData', 'wfCalendar.factories'])
   .controller('wfCalendar.addEventButton.controller', [
     '$scope',
-    'wfCalendar.calendarData.service',
+    'wfCalendarData',
+    'wfRandomEvents',
      controller
   ]);

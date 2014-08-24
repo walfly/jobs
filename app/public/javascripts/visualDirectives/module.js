@@ -6,7 +6,7 @@ var scrollToHour = require('./scrollToHour.js');
 var timeIndicator = require('./timeIndicator.js');
 var truncate = require('./truncate.js');
 
-angular.module('wfCalendar.visualDirectives', ['wfCalendar.calendarData'])
+angular.module('wfCalendar.visualDirectives', [])
   .directive('wfThirtyMinBoxes', thirtyMinBoxes)
   .directive('wfTimeLabel', timeLabel)
   .directive('wfTruncate', truncate)
