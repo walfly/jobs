@@ -8,7 +8,12 @@ var twitter = new Twit ({
 });
 
 module.exports = function (req, res) {
-  twitter.get('search/tweets', {q:'#haiku', count: 100}, function (err, data, response) {
+  twitter.get('search/tweets', {
+    q:'funny',
+    count: 100,
+    lang:'en',
+    geocode: [40.73586, -73.99108, '5mi'],
+  }, function (err, data, response) {
     res.send(_.pluck(data.statuses, 'text'));
   });
 };

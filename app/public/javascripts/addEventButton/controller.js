@@ -3,11 +3,12 @@ module.exports = function ($scope, calendarData, randomEvents) {
     var randomTimes = randomEvents.getRandomEventDates();
     console.log(randomTimes);
     randomEvents.getTwitterText()
-      .then(function (haiku) {
+      .then(function (text) {
+        console.log(text);
         var obj = {
           startTime: randomTimes.start,
           endTime: randomTimes.end,
-          title: haiku
+          title: text
         };
         calendarData.addEvent(obj); 
       });

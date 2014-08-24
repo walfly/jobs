@@ -4,6 +4,7 @@ module.exports = function ($http, $q, calendarData) {
 
   var setTweets = function (res) {
     tweets = res.data;
+    console.log(tweets);
     return tweets.pop();
   };
 
@@ -19,8 +20,12 @@ module.exports = function ($http, $q, calendarData) {
       // choose a random start minute
       startDate.setMinutes(Math.floor(Math.random() * 60));
 
-      // choose a duration between 15 minutes and 5 hours 15 minutes
-      var duration = (15 * 60 * 1000) + (Math.floor(Math.random() * 6) * 60 * 60 * 1000);
+      // choose a duration between 30 minutes and 6 hour or end of day
+      var maxMin = 60 - startDate.getMinutes();
+      var maxHour = 22 - startDate.getHours();
+      var max = (maxHour * 60) + maxMin;
+      max = (max > 5 * 60) ? 5 * 60 : max;
+      var duration = (30 * 60 * 1000) + (Math.floor(Math.random() * max) * 60 * 1000);
 
       return {
         start: startDate,
