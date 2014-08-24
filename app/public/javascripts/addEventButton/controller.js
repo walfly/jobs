@@ -4,7 +4,6 @@ module.exports = function ($scope, calendarData, randomEvents) {
     console.log(randomTimes);
     randomEvents.getTwitterText()
       .then(function (text) {
-        console.log(text);
         var obj = {
           startTime: randomTimes.start,
           endTime: randomTimes.end,

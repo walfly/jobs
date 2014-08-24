@@ -4,7 +4,6 @@ module.exports = function ($http, $q, calendarData) {
 
   var setTweets = function (res) {
     tweets = res.data;
-    console.log(tweets);
     return tweets.pop();
   };
 

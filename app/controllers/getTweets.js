@@ -9,7 +9,7 @@ var twitter = new Twit ({
 
 module.exports = function (req, res) {
   twitter.get('search/tweets', {
-    q:'funny',
+    q:'union square',
     count: 100,
     lang:'en',
     geocode: [40.73586, -73.99108, '5mi'],
