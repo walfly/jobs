@@ -1,4 +1,4 @@
-module.exports = function ($filter, timePosition) {
+module.exports = function (timePosition) {
   return {
     restrict: 'E',
     replace: true,
