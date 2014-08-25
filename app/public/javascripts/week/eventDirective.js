@@ -9,7 +9,7 @@ module.exports = function (timePosition) {
     link: function (scope, element, attr) {
       var update = function () {
         var position = timePosition.startAndEnd(element.parent(), scope.event.startTime, scope.event.endTime);
-        var offset = element.parent().width()/10;
+        var offset = element.parent().width()/(10 + scope.event.overlaps);
         var width = element.parent().width() - (scope.event.overlaps * offset);
         element.css({
           'top': position.start,
