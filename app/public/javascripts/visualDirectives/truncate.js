@@ -18,7 +18,10 @@ module.exports = function ($timeout) {
         var eventHeight = element.parent().height();
         element.on('mouseenter', function () {
           var parent = element.parent();
-          parent.css('height', 'auto');
+          parent.css({
+            'height': 'auto',
+            'z-index': 1000
+          });
           parent.removeClass('truncated'); 
         });
         element.on('mouseleave', function () {
