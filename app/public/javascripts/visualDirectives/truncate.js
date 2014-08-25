@@ -10,7 +10,6 @@ module.exports = function ($timeout) {
         var fontSize = Number(element.css('font-size').split('p')[0]);
         var heightDifference = element.height() - (parent.height() - fontSize);
         if (heightDifference > 0) {
-          console.log('tuncating');
           parent.addClass('truncated');
           // calculate how much to trim
           var approxLines = element.height()/fontSize;
