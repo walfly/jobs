@@ -1,8 +1,11 @@
 module.exports = function ($http, $q, calendarData) {
   var week = calendarData.getWeek();
-  var tweets;
+  var tweets = [];
+  var numberOfRefreshes = 0;
+  var requesting = false;
 
   var setTweets = function (res) {
+    requesting = false;
     tweets = res.data;
     return tweets.pop();
   };
@@ -35,10 +38,14 @@ module.exports = function ($http, $q, calendarData) {
     getTwitterText: function () {
       var defer = $q.defer();
       var promise = defer.promise;
-      if (tweets) {
+      if (tweets.length) {
         defer.resolve(tweets.pop());
+      } else if (!requesting) {
+        requesting = true;
+        promise = $http.get('/api/tweets', {params:{index: numberOfRefreshes}}).then(setTweets);
+        numberOfRefreshes ++;
       } else {
-        promise = $http.get('/api/tweets').then(setTweets);
+        return;
       }
       return promise;
     }

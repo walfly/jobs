@@ -7,12 +7,28 @@ var twitter = new Twit ({
   "access_token_secret": "A1F2zp4O9aAGpK6B6BZ57NpFn3YHfEpR0AmKOsZozWX5s"
 });
 
+var placesToSearch = [
+  {
+    q: 'union square',
+    geocode: [40.73586, -73.99108, '3mi']
+  },
+  {
+    q: 'fort greene',
+    geocode: [40.69206  -73.97419, '3mi']
+  },
+  {
+    q: 'venice beach',
+    geocode: [33.99362  -118.47991, '4mi']
+  }
+]
+
 module.exports = function (req, res) {
+  var placeToSearch = placesToSearch[req.query.index%3];
   twitter.get('search/tweets', {
-    q:'union square',
+    q:placeToSearch.q,
     count: 100,
     lang:'en',
-    geocode: [40.73586, -73.99108, '5mi'],
+    geocode: placeToSearch.geocode,
   }, function (err, data, response) {
     res.send(_.pluck(data.statuses, 'text'));
   });
