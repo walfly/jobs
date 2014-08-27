@@ -30,7 +30,8 @@ if ('development' == app.get('env')) {
 app.use(index.redirect);
 app.get('/authenticate', authenticate.redirect);
 app.get('/authenticate/callback', authenticate.callback);
-app.get('/calendars', calendar);
+app.get('/calendars', calendar.makeGoogRequest);
+app.get('/calendars/:calendarID/events', events.makeGoogRequest);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
