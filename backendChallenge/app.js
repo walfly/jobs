@@ -5,7 +5,8 @@
 
 var express = require('express');
 var authenticate = require('./routes/authenticate.js');
-var genericRoute = require('./routes/index.js');
+var calendar = require('./routes/calendars.js');
+var index = require('./routes/index.js');
 var http = require('http');
 var path = require('path');
 
@@ -26,9 +27,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-app.use(genericRoute);
+app.use(index.redirect);
 app.get('/authenticate', authenticate.redirect);
 app.get('/authenticate/callback', authenticate.callback);
+app.get('/calendars', index.checkIfHasCode, calendar);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

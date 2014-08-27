@@ -3,7 +3,7 @@ var sinon = require('sinon');
 var auth = require('./authenticate.js');
 var codeStore =require('../services/codeStore.js');
 
-describe('the authenticat redirect function', function () {
+describe('the authenticate redirect function', function () {
   var res = {};
   beforeEach(function () {
     res.url = '';
