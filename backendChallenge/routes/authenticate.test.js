@@ -16,19 +16,3 @@ describe('the authenticate redirect function', function () {
   });
 });
 
-describe('the authentication callback', function () {
-  var res = {};
-  var req = {
-    query: {
-      code: 'aCode'
-    }
-  };
-  beforeEach(function () {
-    res.send = sinon.spy();
-  });
-
-  it('shoud send the auth token in the response', function () {
-    auth.callback(req, res);
-    expect(res.send.calledWith('your code: aCode')).to.equal(true);
-  });
-});

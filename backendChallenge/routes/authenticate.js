@@ -15,5 +15,11 @@ exports.redirect = function (req, res) {
 
 
 exports.callback = function (req, res) {
-  res.send('your code: '+ req.query.code);
+  oauth2Client.getToken(req.query.code, function(err, tokens) {
+    if(!err){
+      res.send('your token: ' + tokens.access_token);
+    } else {
+      res.send('invalid token');
+    }
+  });
 };
