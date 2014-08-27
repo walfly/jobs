@@ -6,6 +6,7 @@ var gapi = require('../services/google.js');
 exports.makeGoogRequest = function (req, res) {
   var accessToken = req.query.accessToken;
   if(!accessToken){
+    res.status(400);
     res.send('no token');
     return;
   }
@@ -27,6 +28,7 @@ exports.makeGoogRequest = function (req, res) {
     ],
     function (err, result) {
       if (err) {
+        res.status(400);
         res.send(err);
       } else {
         res.send(result);
@@ -41,8 +43,9 @@ exports.transformResponse = function (googRes, callBack) {
       id: calendar.id,
       title: calendar.summary, 
       color: calendar.backgroundColor,
-      writeable: (calendar.accessRole === 'reader' || calendar.accessRole === 'freeBusyReader') ?
-                  false : true,
+      // true only if owner or writer
+      writeable: (calendar.accessRole === 'writer' || calendar.accessRole === 'owner') ?
+                  true : false,
       selected: calendar.selected,
       timezone: calendar.timeZone
     };

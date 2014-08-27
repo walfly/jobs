@@ -104,10 +104,12 @@ describe('makeGoogRequest', function () {
     query: {}
   };
   var res = {
-    send: sinon.spy()
+    send: sinon.spy(),
+    status: sinon.spy()
   };
   it('should send no token if there is no acess token', function () {
     calendars.makeGoogRequest(req, res);
     expect(res.send.calledWith('no token')).to.equal(true);
+    expect(res.status.calledWith(400)).to.equal(true);
   });
 });
