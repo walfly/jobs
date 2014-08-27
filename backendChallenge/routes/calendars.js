@@ -26,7 +26,7 @@ exports.makeGoogRequest = function (req, res) {
       exports.transformResponse
     ],
     function (err, result) {
-      if (err){
+      if (err) {
         res.send(err);
       } else {
         res.send(result);
