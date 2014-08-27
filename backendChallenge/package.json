@@ -1,18 +1,24 @@
 {
-  "name": "application-name",
+  "name": "SunriseCalendar",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
+    "async": "^0.9.0",
     "express": "3.4.0",
-    "jade": "*"
+    "googleapis": "^1.0.11",
+    "jade": "*",
+    "request": "^2.40.0"
   },
   "devDependencies": {
+    "chai": "^1.9.1",
     "grunt": "~0.4.5",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-mocha-test": "^0.11.0",
-    "jshint-stylish": "~0.4.0"
+    "jshint-stylish": "~0.4.0",
+    "mocha": "^1.21.4",
+    "sinon": "^1.10.3"
   }
 }
