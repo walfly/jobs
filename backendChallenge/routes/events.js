@@ -21,7 +21,7 @@ exports.makeGoogRequest = function (req, res) {
   var calendarId = req.params.calendarID;
   if(!calendarId){
     res.status(400);
-    res.send('calendarId');
+    res.send('no calendarId');
     return;
   }
   async.waterfall(
@@ -67,7 +67,7 @@ exports.transformResponse = function (googRes, callBack) {
       },
       location: event.location,
       organizer : {
-        name: event.organizer.displayName,
+        name: event.organizer.displayName || event.organizer.email,
         emails: [
           event.organizer.email
         ],

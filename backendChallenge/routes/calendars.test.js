@@ -3,7 +3,7 @@ var sinon = require('sinon');
 var calendars = require('./calendars.js');
 
 
-describe('transformResponse', function () {
+describe('calendars.transformResponse', function () {
   var response;
   var callBack = function (err, res) {
     response = res;
@@ -99,7 +99,7 @@ describe('transformResponse', function () {
   });
 });
 
-describe('makeGoogRequest', function () {
+describe('calendars.makeGoogRequest', function () {
   var req = {
     query: {}
   };
