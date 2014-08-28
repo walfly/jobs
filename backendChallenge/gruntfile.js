@@ -17,11 +17,20 @@ module.exports = function(grunt) {
         },
         src: ['*/**/*.test.js', '!node_modules/**/*.js']
       }
-    }
+    },
+    casperjs: {
+      options: {
+        async: {
+          parallel: false
+        }
+      },
+      files: ['casperOauthFlow.js']
+    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-casperjs');
 
-  grunt.registerTask('default', ['jshint', 'mochaTest']);
+  grunt.registerTask('default', ['jshint', 'mochaTest', 'casperjs']);
 };
